@@ -35,7 +35,17 @@ int main() {
       // Clear to Black
       SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0xFF);
       SDL_RenderClear(renderer);
-      // Rendering
+
+      // Set draw color to White
+      SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+
+      for (int y = 0; y < WINDOW_HEIGHT; ++y)
+      {
+        if (y % 5)
+        {
+          SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
+        }
+      }
       // Present the backbuffer
       SDL_RenderPresent(renderer);
     }
