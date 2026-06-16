@@ -1,7 +1,14 @@
 cmake_minimum_required(VERSION 3.31)
-include_directories(include)
-target_sources(
+project(Pong LANGUAGES CXX VERSION 1.0.0)
+
+set(SOFTWARE_OUTPUT "Pong_${CMAKE_PROJECT_VERSION}.exe")
+
+set(SOURCES
   main.cpp
 )
 
-set(CMAKE_BINARY_DIR "${CMAKE_PROJECT_DIR}/bin")
+add_executable(${SOFTWARE_OUTPUT} ${SOURCES})
+
+target_link_libraries(${SOFTWARE_OUTPUT} PRIVATE SDL2)
+
+

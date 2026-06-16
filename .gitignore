@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Prerequisites
 *.d
 
@@ -67,3 +68,12 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+=======
+*.exe
+CMakeCache*
+MakeFile*
+CMakeFiles/
+.git
+*.cmake
+*.env
+>>>>>>> b057246 (Working CMake configuration)
