@@ -76,3 +76,4 @@ CMakeFiles/
 *.cmake
 *.env
 **/MakeFile
+build/Makefile

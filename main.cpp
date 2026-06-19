@@ -1,7 +1,4 @@
-#include <SDL2/SDL.h>
-
-const int WINDOW_WIDTH = 1280;
-const int WINDOW_HEIGHT = 720;
+#include "main.h"
 
 int main() {
   // Init SDL Graphic Components to Main Function
