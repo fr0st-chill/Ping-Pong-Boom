@@ -3,11 +3,39 @@
 int main() {
   // Init SDL Graphic Components to Main Function
   SDL_Init(SDL_INIT_VIDEO);
+  TTF_Init();
 
   SDL_Window* window = SDL_CreateWindow("Pong", 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
   SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
 
-  // Main Game Logic
+  // Init fonr
+  TTF_Font* scoreFont = TTF_OpenFont("DejaVuSansMono.ttf", 40);
+
+  // Create player score text fields
+  PlayerScore playerOneScoreText(Vec2(WINDOW_WIDTH / 4, 20), renderer, scoreFont, scoreColor);
+  PlayerScore playerTwoScoreText(Vec2(3 * WINDOW_WIDTH / 4, 20), renderer, scoreFont, scoreColor);
+
+  Paddle paddleOne(
+	Vec2(50.0f, (WINDOW_HEIGHT / 2.0f) - (PADDLE_HEIGHT / 2.0f))
+  );
+
+  Paddle paddleTwo(
+	Vec2(WINDOW_WIDTH - 50.0f, (WINDOW_HEIGHT / 2.0f) - (PADDLE_HEIGHT / 2.0f))
+  );
+
+  // Create the ball
+  Ball ball(
+	Vec2((WINDOW_WIDTH / 2.0f) - (BALL_WIDTH / 2.0f),
+	(WINDOW_HEIGHT / 2.0f) - (BALL_WIDTH / 2.0f)));
+
+  // Draw the ball
+  ball.Draw(renderer);
+
+  // Present the backbuffer
+  SDL_RenderPresent(renderer);
+
+  // ## Main Game Execution ##
+
   {
     bool running = true;
 
@@ -43,6 +71,13 @@ int main() {
           SDL_RenderDrawPoint(renderer, WINDOW_WIDTH / 2, y);
         }
       }
+      // Draw the ball
+      ball.Draw(renderer);
+
+      // Draw the paddles
+      paddleOne.Draw(renderer);
+      paddleTwo.Draw(renderer);
+
       // Present the backbuffer
       SDL_RenderPresent(renderer);
     }
@@ -51,6 +86,8 @@ int main() {
   // Clean-up the Runtime Environment
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);
+  TTF_CloseFont(scoreFont);
+  TTF_Quit();
   SDL_Quit();
 
   return 0;
