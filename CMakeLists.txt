@@ -8,9 +8,9 @@ set(SOURCES
 )
 
 find_package(SDL2 REQUIRED)
+find_package(SDL2_ttf REQUIRED)
+
 include_directories(Pong ${SDL2_INCLUDE_DIRS})
 add_executable(${SOFTWARE_OUTPUT} ${SOURCES})
 
-find_package(SDL2_ttf)
-find_package(SDL2)
 target_link_libraries(${SOFTWARE_OUTPUT} PRIVATE ${SDL2_LIBRARIES} ${SDL_TTF_LIBRARIES})
