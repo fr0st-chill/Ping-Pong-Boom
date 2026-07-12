@@ -1,0 +1,16 @@
+{
+    "name": "local-builder (x86)",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "workspaceFolder": "/workspaces/",
+    "workspaceMount": "source=${localWorkspaceFolderBasename},target=${containerWorkspaceFolder},type=volume",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools-extension-pack"
+            ]
+        }
+    }
+}
